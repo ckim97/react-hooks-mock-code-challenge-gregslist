@@ -13,13 +13,13 @@ function App() {
       .then(data => setListings(data))
   }, [])
 
-  function handleDelete(deleteItem) {
-    fetch(`http://localhost:6001/listings/${deleteItem}`, {
+  function handleDelete(deleteItemId) {
+    fetch(`http://localhost:6001/listings/${deleteItemId}`, {
       method: "DELETE"
     })
       .then(r => r.json())
       .then(() => {
-        const newListings = listings.filter((listing) => listing.id !== deleteItem);
+        const newListings = listings.filter((listing) => listing.id !== deleteItemId);
         setListings(newListings);
       })
   }
